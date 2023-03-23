@@ -1,0 +1,85 @@
+PRE ORDER TRAVERSAL
+class BinaryTree
+{
+    static ArrayList<Integer> preorder(Node root)
+    {
+        ArrayList<Integer> l=new ArrayList<Integer>();
+    trave(root,l);
+    return l;
+    }
+static void trave(Node root,ArrayList<Integer> l){
+    if(root==null){
+        return;
+    }
+    else{
+        l.add(root.data);
+    }
+    trave(root.left,l);
+    trave(root.right,l);
+}
+}
+
+IN ORDER TRAVERSAL
+class Solution {
+    ArrayList<Integer> inOrder(Node root) {
+        ArrayList<Integer> l=new ArrayList<Integer>();
+        trave(root,l);
+        return l;
+    }
+    static void trave(Node root,ArrayList<Integer> l){
+    if(root==null){
+        return;
+    }
+    trave(root.left,l);
+    
+        l.add(root.data);
+    
+    trave(root.right,l);
+}
+}
+ POST ORDER TRAVERSAL
+ class Tree
+{
+    ArrayList<Integer> postOrder(Node root)
+    {
+       
+        ArrayList<Integer> l=new ArrayList<Integer>();
+        trave(root,l);
+        return l;
+    }
+    static void trave(Node root,ArrayList<Integer> l){
+    if(root==null){
+        return;
+    }
+    trave(root.left,l);
+    trave(root.right,l);
+    l.add(root.data);
+}
+}
+
+LEVEL ORDER TRAVERSAL
+class Solution
+{
+    static ArrayList <Integer> levelOrder(Node root) 
+    {
+        ArrayList<Integer> l=new ArrayList<Integer>();
+        Queue<Node> q=new LinkedList<Node>();
+        if(root!=null){
+            q.add(root);
+        }
+        while(q.isEmpty()==false){
+            int n=q.size();
+            for(int i=0; i<n; i++){
+                Node cur=q.poll();
+                l.add(cur.data);
+                if(cur.left!=null){
+                    q.add(cur.left);
+                }
+                if(cur.right!=null){
+                    q.add(cur.right);
+                }
+            }
+        }
+        return l;
+    }
+}
