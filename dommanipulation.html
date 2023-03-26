@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #button1{
+            background-color: crimson;
+            color: white;
+            border-radius: 5px;
+            height: 30px;
+            font-size: 20px;
+            margin-top: 10px;
+        }
+        #para1{
+            font-size: 20px;
+        }
+        li{
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <p id="para1" onmouseover="mouseoverpara('para1')" onmouseout="mouseoutpara('para1')">This is a paragraph text</p>
+    <input type="text" id="inp1"><br>
+    <button id="button1" onmouseover="mouseoverbutton('button1')" onmouseout="mouseoutbutton('button1')" onclick="getpara('para1')">This is the original text of button</button>
+    <p>Do onmouseover and onmouseout on the button</p>
+    <p>Click on the button to get the paragraph text to the input textbox</p>
+    <h3>Cars</h3>
+        <ol>
+            <li onmouseover="listmouseover('0')" onmouseout="listmouseout('0')">Buggati</li>
+            <li onmouseover="listmouseover('1')" onmouseout="listmouseout('1')">Rangerover</li>
+            <li onmouseover="listmouseover('2')" onmouseout="listmouseout('2')">Jaguar</li>
+            <li onmouseover="listmouseover('3')" onmouseout="listmouseout('3')">BMW</li>
+        </ol>
+        <p>Onmouseover and Onmouseout on list to change color and fontWeight</p>
+    <script>
+        function mouseoverpara(idd){
+            let p1=document.getElementById(idd);
+            p1.style.color="red";
+        }
+        function mouseoutpara(idd){
+            let p1=document.getElementById(idd);
+            p1.style.color="black";
+        }
+        var originall;
+        function mouseoverbutton(idd){
+            let b1=document.getElementById(idd);
+            originall=b1.innerHTML;
+            b1.innerHTML="Button text is modified";
+        }
+        function mouseoutbutton(idd){
+            let b2=document.getElementById(idd)
+            b2.innerHTML=originall; 
+        }
+        function getpara(id1){
+            let p1=document.getElementById(id1);
+              let i1=document.getElementById("inp1");
+              var ptext=p1.innerText;
+              i1.value=ptext;
+        }
+        var oricolor;
+        var orifont;
+        function listmouseover(index){
+            let ele=document.getElementsByTagName("li")
+            oricolor=ele[index].style.color;
+            orifont=ele[index].style.fontWeight;
+            ele[index].style.color="crimson";
+            ele[index].style.fontWeight="bold";
+        }
+        function listmouseout(index){
+            let ele=document.getElementsByTagName("li")
+            ele[index].style.color=oricolor;
+            ele[index].style.fontWeight=orifont;
+        }
+    </script>
+</body>
+</html>
